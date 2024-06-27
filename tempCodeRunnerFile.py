@@ -1,0 +1,1 @@
+list_B.append(random_char)
