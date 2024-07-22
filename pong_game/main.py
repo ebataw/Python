@@ -25,7 +25,7 @@ score =Scoreboard()
 
 game_on = True
 while game_on:
-    time.sleep(0.1)
+    time.sleep(0.05)
     screen.update()
     ball.move()
 
