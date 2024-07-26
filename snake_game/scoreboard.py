@@ -4,23 +4,31 @@ class Score(Turtle):
     def __init__(self) :
         super().__init__()
         self.score = 0
+        with open("data.txt") as data:
+            self.high_score = int(data.read())
         self.penup()
         self.hideturtle()
         self.color("white")
         self.goto(0, 270)
         self.update_score()
+        with open("data.txt",mode="w") as fe:
+            fe.write(str(self.high_score))
 
 
-    def Game_over(self):
-        self.goto(0, 0)
-        self.color("white")
-        self.write(arg= "Game Over", align="center",  font=("Courier", 24, "normal"))
-        self.hideturtle()
+    def reset(self):
+        if self.score > self.high_score:
+            self.high_score = self.score
+            with open("data.txt",mode="w") as fe:
+                fe.write(f"{self.high_score}")
+        self.score = 0
+        self.update_score()
 
 
 
     def update_score(self):
-        self.write(arg= f"Score: {self.score}", align="center",  font=("Courier", 14, "normal"))
+        with open("data.txt", mode= "r") as fe:
+            self.clear()
+            self.write(arg= f"Score:{self.score}  High score: {fe.read()}", align="center",  font=("Courier", 14, "normal"))
 
 
 

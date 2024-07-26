@@ -24,9 +24,14 @@ class Snake:
             doyo.color("green")
             doyo.goto(position)
             self.turtles.append(doyo)
-
     def extend(self):
         self.add_turtles(self.turtles[-1].position())
+    def reset(self):
+        for turt in self.turtles:
+            turt.goto(1000,1000)
+        self.turtles.clear()
+        self.create_snake()
+        self.head = self.turtles[0]
 
     def move(self):
         for turt_num in range(len(self.turtles) - 1, 0, -1):
